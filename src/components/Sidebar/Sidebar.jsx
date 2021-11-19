@@ -102,9 +102,16 @@ const Sidebar = () => {
                 <span>Users</span>
               </ListItem>
             </li>
-            <li className="sidebarItems">
-              <WorkOutline />
-              <span>Product</span>
+            <li>
+              <ListItem
+                className="sidebarItems"
+                exact
+                to="/product"
+                component={Link}
+              >
+                <WorkOutline />
+                <span>Product</span>
+              </ListItem>
             </li>
             <li className="sidebarItems">
               <BarChart />

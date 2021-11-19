@@ -12,6 +12,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import { Link } from "react-router-dom";
 import AddNewUser from "./components/UserList/AddNewUser";
+import Product from "./components/Product/Product";
 
 function App() {
   const [data, setData] = useState(rows);
@@ -151,6 +152,8 @@ function App() {
               render={() => <AddNewUser data={data} setData={setData} />}
               exact
             />
+
+            <Route path="/product" component={Product} exact />
           </Switch>
         </Col>
       </Row>

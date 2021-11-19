@@ -48,6 +48,24 @@ export const userData = [{
         "Active Users": 6000,
     },
 ];
+
+// Product data
+export const productData = [{
+        name: "Jan",
+        "Sales": 2000,
+    },
+    {
+        name: "Feb",
+        "Sales": 1000,
+    },
+    {
+        name: "Mar",
+        "Sales": 3000,
+    },
+
+]
+
+
 // New join members data
 export const members = [{
         name: "Ana watson",
