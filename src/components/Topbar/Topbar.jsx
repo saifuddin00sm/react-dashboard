@@ -58,7 +58,7 @@ const Topbar = () => {
         <div>
           <Logo>
             <Link to="/" exact>
-              Saif dashboard
+              User Dashboard
             </Link>
           </Logo>
         </div>

@@ -7,10 +7,11 @@ import { Col, Row } from "react-bootstrap";
 import Home from "./components/Pages/Home/Home";
 import Sidebar from "./components/Sidebar/Sidebar";
 import SingleUser from "./components/UserList/SingleUser";
-import { IconButton } from "@material-ui/core";
+import { IconButton, Tooltip } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import { Link } from "react-router-dom";
+import AddNewUser from "./components/UserList/AddNewUser";
 
 function App() {
   const [data, setData] = useState(rows);
@@ -31,7 +32,8 @@ function App() {
       setOpen(true);
     }
   };
-  const getSingleUser = user => {
+
+  const getUserData = user => {
     setSingleUser(user);
   };
 
@@ -86,11 +88,13 @@ function App() {
         <>
           <Link to={"/user/" + params.row.id} exact>
             <IconButton
-              onClick={() => getSingleUser(params.row)}
+              onClick={() => getUserData(params.row)}
               color="primary"
               size="small"
             >
-              <EditIcon fontSize="small" />
+              <Tooltip title="Edit" placement="top-start">
+                <EditIcon fontSize="small" />
+              </Tooltip>
             </IconButton>
           </Link>
           <IconButton
@@ -98,7 +102,9 @@ function App() {
             size="small"
             onClick={() => handleDel(params.row.id)}
           >
-            <DeleteIcon fontSize="small" />
+            <Tooltip title="Delete" placement="top-start">
+              <DeleteIcon fontSize="small" />
+            </Tooltip>
           </IconButton>
         </>
       ),
@@ -130,7 +136,19 @@ function App() {
             />
             <Route
               path="/user/:userid"
-              render={() => <SingleUser singleUser={singleUser} />}
+              render={() => (
+                <SingleUser
+                  singleUser={singleUser}
+                  setSingleUser={setSingleUser}
+                  data={data}
+                  setData={setData}
+                />
+              )}
+              exact
+            />
+            <Route
+              path="/addnewuser"
+              render={() => <AddNewUser data={data} setData={setData} />}
               exact
             />
           </Switch>
